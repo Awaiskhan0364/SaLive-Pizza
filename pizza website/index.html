@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>S.A Live Pizza | Premium Tandoori Taste</title>
+  <meta name="description" content="S.A Live Pizza & Burgers in Pakistan - fresh tandoori flavors, wood-fired taste, fast delivery.">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-deep: #0f0e0e;
+      --bg-card: #181716;
+      --bg-elevated: #201f1e;
+      --primary: #d4a373;
+      --primary-dark: #c49262;
+      --accent: #e9c46a;
+      --text-white: #fefcf5;
+      --text-gray: #cdc9c2;
+      --text-muted: #8a8580;
+      --border-dim: rgba(212, 163, 115, 0.2);
+      --shadow-sm: 0 8px 20px rgba(0,0,0,0.4);
+      --transition: all 0.25s ease;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-white);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg-card); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      transition: var(--transition);
+      background: rgba(15,14,14,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212,163,115,0.15);
+      animation: slideDown 0.6s ease-out;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .navbar.scrolled {
+      background: rgba(15,14,14,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--primary);
+      padding: 0.7rem 5%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0 auto;
+      padding: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-gray);
+      font-weight: 500;
+      transition: var(--transition);
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      letter-spacing: 0.3px;
+      position: relative;
+      animation: fadeInUp 0.5s ease backwards;
+      animation-delay: calc(0.05s * var(--i, 1));
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .cart-btn {
+      background: transparent;
+      border: 1px solid var(--primary);
+      border-radius: 40px;
+      padding: 6px 18px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(212,163,115,0.1);
+      backdrop-filter: blur(4px);
+      text-decoration: none;
+      position: relative;
+    }
+    .cart-btn:hover {
+      background: var(--primary);
+      color: #0f0e0e;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(212,163,115,0.4);
+    }
+    .cart-count {
+      background: var(--accent);
+      color: #0f0e0e;
+      font-size: 0.7rem;
+      font-weight: bold;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -6px;
+      right: -6px;
+    }
+    .hamburger { display: none; font-size: 1.6rem; cursor: pointer; color: var(--text-gray); }
+    .hamburger:hover { color: var(--primary); }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 120px 5% 80px;
+      position: relative;
+      text-align: left;
+      background-image: url('ai-generated-delicious-slice-of-pepperoni-pizza-soaring-on-a-black-background-an-enticing-design-ai-generated-photo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    @media (max-width: 768px) {
+      .hero { background-attachment: scroll; background-position: 30% center; }
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(15,14,14,0.85) 0%, rgba(15,14,14,0.6) 50%, rgba(15,14,14,0.4) 100%);
+      z-index: 0;
+    }
+    .hero-content {
+      max-width: 700px;
+      margin: 0;
+      z-index: 2;
+      position: relative;
+    }
+    .hero-content h1 .brand-name {
+      font-size: 6rem;
+      display: inline-block;
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(212,163,115,0.5), 0 0 20px rgba(212,163,115,0.3);
+      animation: gentleGlow 2s infinite alternate ease-in-out;
+      letter-spacing: -1px;
+    }
+    @keyframes gentleGlow {
+      0% { text-shadow: 0 0 4px rgba(212,163,115,0.3), 0 0 8px rgba(212,163,115,0.1); }
+      100% { text-shadow: 0 0 15px rgba(212,163,115,0.7), 0 0 25px rgba(212,163,115,0.4); }
+    }
+    .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    .shop-sub { font-size: 1.2rem; color: var(--accent); font-weight: 500; letter-spacing: 1px; margin-bottom: 0.8rem; border-left: 3px solid var(--primary); padding-left: 12px; }
+    .typing-text { font-size: 1.4rem; color: var(--accent); margin: 0.5rem 0 0.8rem; font-weight: 500; min-height: 2.3rem; border-right: 2px solid var(--accent); display: inline-block; white-space: nowrap; overflow: hidden; padding-right: 4px; }
+    .hero-description { color: var(--text-gray); max-width: 500px; margin: 0.5rem 0 1.8rem; line-height: 1.5; }
+    .hero-buttons { display: flex; gap: 1rem; margin: 1rem 0 1.5rem; flex-wrap: wrap; }
+    .btn {
+      padding: 10px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--primary); color: #0f0e0e; font-weight: 700; border: none; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-outline { border: 1px solid var(--primary); background: transparent; color: var(--primary); }
+    .btn-outline:hover { background: rgba(212,163,115,0.15); transform: translateY(-2px); }
+    .social-links { display: flex; gap: 1.2rem; margin-top: 1rem; }
+    .social-links a { color: var(--text-muted); font-size: 1.2rem; transition: 0.2s; }
+    .social-links a:hover { color: var(--primary); transform: translateY(-2px); }
+
+    /* Menu Section */
+    section { padding: 80px 5%; position: relative; }
+    .container { max-width: 1400px; margin: 0 auto; }
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: var(--primary);
+      margin: 0.8rem auto 0;
+      border-radius: 2px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-gray);
+      margin-bottom: 3rem;
+      font-size: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+    }
+    .menu-category { margin-bottom: 3.5rem; }
+    .category-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+      border-left: 5px solid var(--primary);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .category-title i { font-size: 1.6rem; color: var(--primary); }
+    .pizza-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+    .food-card {
+      background: var(--bg-card);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid var(--border-dim);
+      cursor: pointer;
+    }
+    .food-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.4);
+    }
+    .food-img { height: 210px; overflow: hidden; }
+    .food-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
+    .food-card:hover .food-img img { transform: scale(1.05); }
+    .food-info { padding: 1.2rem 1.5rem 1.5rem; }
+    .food-info h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--primary); font-weight: 600; }
+    .food-info .badge {
+      background: rgba(233,196,106,0.2);
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      color: var(--accent);
+      display: inline-block;
+    }
+
+    /* Info Cards */
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 3rem 0 2rem;
+    }
+    .info-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      flex: 1;
+      min-width: 200px;
+      border: 1px solid var(--border-dim);
+      transition: background 0.2s ease;
+    }
+    .info-card:hover {
+      background: var(--bg-elevated);
+      border-color: rgba(212,163,115,0.3);
+    }
+    .info-card i {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      display: inline-block;
+    }
+    .info-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+    }
+    .info-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* About, Testimonials, Footer */
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-text { flex: 1; }
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .about-text p {
+      color: var(--text-gray);
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+    }
+    .about-img { flex: 1; border-radius: 20px; overflow: hidden; }
+    .about-img img { width: 100%; border-radius: 20px; }
+    .testimonials-slider { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.5rem 0.2rem; }
+    .testimonial-card { flex: 0 0 310px; background: var(--bg-card); border-radius: 20px; padding: 1.4rem; scroll-snap-align: start; border: 1px solid var(--border-dim); }
+    .testimonial-card i { color: var(--primary); margin-bottom: 0.8rem; display: inline-block; }
+    .testimonial-card p { font-size: 0.9rem; color: var(--text-gray); margin: 0.8rem 0; }
+
+    /* Location Map Section */
+    .map-section {
+      padding: 60px 5% 40px;
+      background: var(--bg-deep);
+    }
+    .map-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--primary);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      display: block;
+    }
+    .map-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .map-address {
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--text-gray);
+      font-size: 1rem;
+    }
+
+    /* Updated Footer Styles - S.A LIVE Pizza + three contact options below */
+    .main-footer {
+      background: #0a0908;
+      padding: 35px 5% 25px;
+      border-top: 1px solid var(--primary);
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .footer-brand h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.3rem;
+    }
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-contact a {
+      color: var(--text-gray);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+    .footer-contact a:hover {
+      color: var(--primary);
+    }
+    .footer-contact i {
+      width: 20px;
+      color: var(--primary);
+    }
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .footer-social a {
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      transition: 0.2s;
+    }
+    .footer-social a:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-left {
+        align-items: center;
+      }
+      .footer-contact a {
+        justify-content: center;
+      }
+    }
+
+    /* Modals & Drawers (unchanged) */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: var(--bg-card);
+      border-radius: 28px;
+      width: 90%;
+      max-width: 550px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--border-dim);
+      background: var(--bg-card);
+      flex-shrink: 0;
+    }
+    .modal-header h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin: 0;
+    }
+    .modal-close {
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--text-gray);
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--primary); }
+    .modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .size-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border-dim);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .size-option:hover { background: rgba(212,163,115,0.1); padding-left: 8px; }
+    .size-name { font-weight: 600; }
+    .size-price { color: var(--accent); font-weight: 600; }
+    .modal-add-btn {
+      margin-top: 1.5rem;
+      width: 100%;
+      background: var(--primary);
+      border: none;
+      padding: 12px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #0f0e0e;
+      font-size: 1rem;
+    }
+    /* Cart Drawer */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 380px;
+      max-width: 90%;
+      height: 100%;
+      background: var(--bg-card);
+      z-index: 2001;
+      transition: right 0.3s ease;
+      box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--primary);
+    }
+    .cart-drawer.open { right: 0; }
+    .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .cart-header h3 { font-size: 1.5rem; color: var(--primary); }
+    .close-cart { font-size: 1.5rem; cursor: pointer; }
+    .cart-items { flex: 1; overflow-y: auto; }
+    .cart-item { display: flex; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-dim); }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-weight: 600; }
+    .cart-item-size { font-size: 0.8rem; color: var(--text-muted); }
+    .cart-item-price { color: var(--accent); }
+    .remove-item { color: #e63946; cursor: pointer; margin-left: 1rem; }
+    .cart-total { margin-top: 1rem; padding-top: 1rem; border-top: 2px solid var(--primary); font-weight: 700; display: flex; justify-content: space-between; }
+    .checkout-btn {
+      background: var(--primary);
+      color: #0f0e0e;
+      border: none;
+      padding: 12px;
+      border-radius: 40px;
+      font-weight: 700;
+      margin-top: 1rem;
+      cursor: pointer;
+      width: 100%;
+    }
+    .clear-cart-btn {
+      background: transparent;
+      border: 1px solid var(--text-muted);
+      color: var(--text-gray);
+      padding: 8px;
+      border-radius: 40px;
+      margin-top: 0.5rem;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /* Checkout Modal specific styles */
+    .checkout-form .form-group {
+      margin-bottom: 1rem;
+    }
+    .checkout-form label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.85rem;
+      color: var(--text-gray);
+    }
+    .checkout-form input, .checkout-form select, .checkout-form textarea {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-dim);
+      border-radius: 30px;
+      color: white;
+      font-size: 0.9rem;
+    }
+    .checkout-form textarea {
+      resize: vertical;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      line-height: 1.4;
+    }
+    .order-summary {
+      background: var(--bg-elevated);
+      border-radius: 20px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-dim);
+    }
+    .order-summary h4 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+    }
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-gray);
+    }
+    .summary-total {
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border-dim);
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .place-order-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 40px;
+      font-weight: 700;
+      margin-top: 1rem;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /* Floating Order Now Button */
+    .floating-order-now {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: var(--primary);
+      color: #0f0e0e;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+    .floating-order-now:hover {
+      transform: translateY(-3px);
+      background: var(--primary-dark);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    @media (max-width: 768px) {
+      .floating-order-now {
+        bottom: 80px;
+        right: 15px;
+        padding: 8px 18px;
+        font-size: 0.85rem;
+      }
+      .cart-drawer { width: 320px; }
+      .navbar { justify-content: space-between; padding: 1rem 5%; }
+      .nav-links {
+        position: fixed;
+        top: 65px;
+        right: -100%;
+        flex-direction: column;
+        background: #0f0e0e;
+        width: 70%;
+        height: calc(100vh - 65px);
+        padding: 2rem;
+        transition: 0.3s;
+        border-left: 1px solid var(--primary);
+        gap: 1.5rem;
+        align-items: flex-start;
+        margin: 0;
+      }
+      .nav-links.active { right: 0; }
+      .hamburger { display: block; }
+      .hero { justify-content: center; text-align: center; padding: 100px 5% 60px; }
+      .hero-content { text-align: center; margin: 0 auto; }
+      .hero-content h1 .brand-name { font-size: 3.5rem; }
+      .hero-content h1 { font-size: 2rem; }
+      .shop-sub { border-left: none; display: inline-block; padding-left: 0; }
+      .typing-text { white-space: normal; border-right: none; display: block; text-align: center; font-size: 1.2rem; }
+      .hero-description { margin: 0 auto 1.8rem; }
+      .section-title { font-size: 2rem; }
+      .info-card { min-width: 160px; padding: 1rem; }
+      .info-card i { font-size: 1.6rem; }
+      .info-card h4 { font-size: 0.9rem; }
+      .about-text h3 { font-size: 1.5rem; }
+      .map-container iframe { height: 250px; }
+      .modal-content { max-width: 95%; }
+      .modal-header h3 { font-size: 1.2rem; }
+    }
+    .reveal { opacity: 0; transform: translateY(18px); transition: all 0.5s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- Navbar (unchanged) -->
+<nav class="navbar" id="navbar">
+  <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" class="nav-link" style="--i:1" id="homeLink">Home</a></li>
+    <li><a href="#menu" class="nav-link" style="--i:2">Menu</a></li>
+    <li><a href="#about" class="nav-link" style="--i:3">About</a></li>
+    <li><a href="#testimonials" class="nav-link" style="--i:5">Reviews</a></li>
+    <li><a href="#map-section" class="nav-link" style="--i:6">Location</a></li>
+  </ul>
+  <div class="cart-btn" id="cartBtn">
+    <i class="fas fa-shopping-cart"></i> Cart
+    <span class="cart-count" id="cartCount">0</span>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1><span class="brand-name">S.A LIVE</span> Pizza</h1>
+    <div class="shop-sub">Live Tandoor • Real Taste, Real Freshness</div>
+    <div class="typing-text" id="typingText"></div>
+    <p class="hero-description">We make fresh hand-tossed pizzas, juicy burgers, and tasty tandoori food daily for you.</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-primary">Explore Menu</a>
+      <a href="#order" class="btn btn-outline">Order Now</a>
+    </div>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Menu Section -->
+<section id="menu"><div class="container">
+  <h2 class="section-title">Our Signature Menu</h2>
+  <p class="section-subtitle">Real taste in every bite.</p>
+  <div class="menu-category"><div class="category-title"><i class="fas fa-pizza-slice"></i> Basic Flavors</div><div class="pizza-grid" id="basicGrid"></div></div>
+  <div class="menu-category"><div class="category-title"><i class="fas fa-star"></i> Premium Flavors</div><div class="pizza-grid" id="premiumGrid"></div></div>
+  <div class="menu-category"><div class="category-title"><i class="fas fa-crown"></i> S.A Live Specials</div><div class="pizza-grid" id="specialGrid"></div></div>
+  <div class="info-section">
+    <div class="info-card"><i class="fas fa-cheese"></i><h4>Extra Toppings</h4><p>Medium: 150/- | Large: 200/-</p></div>
+    <div class="info-card"><i class="fas fa-motorcycle"></i><h4>Delivery Charges</h4><p>₨50 (2km) | ₨100 (5km)</p></div>
+  </div>
+</div></section>
+
+<!-- About Section -->
+<section id="about"><div class="container about-content">
+  <div class="about-text reveal">
+    <h3>Real Food. Real Fire. Real Taste.</h3>
+    <p>At S.A LIVE Pizza, we believe great food starts with fresh ingredients and a hot tandoor. Every pizza is hand-tossed, every burger flame-grilled, and every bite made to order — just the way you like it.</p>
+    <p>From our signature Crown Crust to the classic Chicken Tikka, No shortcuts, no frozen stuff. Just honest, delicious food delivered fast.</p>
+    <p><strong>Come taste the difference.</strong></p>
+  </div>
+  <div class="about-img reveal"><img src="hq720.jpg" alt="Kitchen"></div>
+</div></section>
+
+<section id="testimonials"><div class="container"><h2 class="section-title">What Our Customers Say</h2><div class="testimonials-slider" id="testimonialSlider"></div></div></section>
+
+<!-- Map Section -->
+<section id="map-section" class="map-section">
+  <div class="map-title">📍 Find Us Here</div>
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108628.95509161037!2d74.25584890820312!3d31.582045000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39191cba1b9b3b9b%3A0x8b9b9b9b9b9b9b9b!2sLahore%20Food%20Street!5e0!3m2!1sen!2s!4v1650000000000!5m2!1sen!2s" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+  <div class="map-address">
+    <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> 123 Food Street, Lahore, Pakistan
+  </div>
+</section>
+
+<!-- ========== UPDATED FOOTER ========== -->
+<footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <div class="footer-brand">
+        <h3>S.A LIVE Pizza</h3>
+      </div>
+      <div class="footer-contact">
+        <a href="https://wa.me/923001234567" target="_blank"><i class="fab fa-whatsapp"></i> +92 300 1234567 (WhatsApp)</a>
+        <a href="tel:+923001234567"><i class="fas fa-phone-alt"></i> +92 300 1234567 (Call)</a>
+        <a href="mailto:order@salive.com"><i class="fas fa-envelope"></i> order@salive.com</a>
+      </div>
+    </div>
+    <div class="footer-social">
+      <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2025 S.A Live Pizza — All rights reserved. Powered by Awais production
+  </div>
+</footer>
+
+<!-- Modals and drawers (unchanged) -->
+<div id="itemModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modalItemName"></h3>
+      <span class="modal-close">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div id="modalSizes"></div>
+      <button class="modal-add-btn" id="modalAddToCart">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<div id="checkoutModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Complete Your Order</h3>
+      <span class="modal-close" id="closeCheckoutModal">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="order-summary" id="checkoutSummary">
+        <h4>Your Order Summary</h4>
+        <div id="summaryItemsList"></div>
+        <div class="summary-total" id="summaryTotal">Total: ₨0</div>
+      </div>
+      <div class="checkout-form">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="checkoutName" placeholder="Enter your name" required></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" id="checkoutPhone" placeholder="03xx xxxxxxx" required></div>
+        <div class="form-group"><label>Delivery Address *</label><textarea id="checkoutAddress" rows="3" placeholder="House No., Street, Area" required></textarea></div>
+        <div class="form-group"><label>Payment Method *</label><select id="checkoutPayment" required><option value="">Select payment method</option><option value="Cash on Delivery">Cash on Delivery</option><option value="JazzCash">JazzCash</option><option value="EasyPaisa">EasyPaisa</option><option value="Bank Transfer">Bank Transfer</option></select></div>
+        <button class="place-order-btn" id="placeOrderBtn">Place Order on WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="cartDrawer" class="cart-drawer">
+  <div class="cart-header"><h3>Your Cart</h3><span class="close-cart">&times;</span></div>
+  <div class="cart-items" id="cartItemsList"></div>
+  <div class="cart-total"><span>Total:</span><span id="cartTotalPrice">₨0</span></div>
+  <button class="checkout-btn" id="proceedCheckoutBtn">Proceed to Checkout</button>
+  <button class="clear-cart-btn" id="clearCartBtn">Clear Cart</button>
+</div>
+
+<button class="floating-order-now" id="floatingOrderNowBtn"><i class="fas fa-shopping-bag"></i> Order Now</button>
+
+<script>
+  // ---------- Cart State ----------
+  let cart = JSON.parse(localStorage.getItem('sa_cart')) || [];
+
+  // Menu data (original items with prices)
+  const menuItems = {
+    basic: [
+      { name: "Chicken Tikka", small: 350, medium: 750, large: 1100, img: "Screenshot 2026-05-17 141733.png" },
+      { name: "Chicken Fajita", small: 350, medium: 750, large: 1100, img: "fatija.png" },
+      { name: "Chicken Supreme", small: 350, medium: 750, large: 1100, img: "supreme.png" }
+    ],
+    premium: [
+      { name: "Chicken Pepperoni", small: 450, medium: 850, large: 1300, img: "peproni.png" },
+      { name: "Creamy Tikka", small: 450, medium: 850, large: 1300, img: "cremey tikka.png" },
+      { name: "Bar B Q Pizza", small: 450, medium: 850, large: 1300, img: "bar bi q.png" }
+    ],
+    special: [
+      { name: "S.A Live Special Pizza", medium: 1000, large: 1450, img: "secial.png" },
+      { name: "S.A Live Special Malai Boti", medium: 1000, large: 1450, img: "malai boti.png" },
+      { name: "S.A Live Special Nwabi Kwabi", medium: 1000, large: 1450, img: "kabi.png" },
+      { name: "Crown Crust Pizza", medium: 1000, large: 1450, img: "crown.png" }
+    ],
+    burgers: [
+      { name: "Double Smash Burger", price: 650, img: "double-cheeseburger.webp" },
+      { name: "Spicy Chicken Burger", price: 550, img: "spicy burger.webp" },
+      { name: "Veggie Supreme", price: 450, img: "vigei.jpg" }
+    ]
+  };
+
+  function renderMenuCards() {
+    const basicContainer = document.getElementById('basicGrid');
+    const premiumContainer = document.getElementById('premiumGrid');
+    const specialContainer = document.getElementById('specialGrid');
+    
+    function createCard(item, isBurger = false) {
+      const card = document.createElement('div');
+      card.className = 'food-card';
+      card.innerHTML = `<div class="food-img"><img src="${item.img}" alt="${item.name}"></div><div class="food-info"><h3>${item.name}</h3><span class="badge">+ ADD TO CART</span></div>`;
+      card.addEventListener('click', () => openModal(item, isBurger));
+      return card;
+    }
+    
+    menuItems.basic.forEach(i => basicContainer.appendChild(createCard(i)));
+    menuItems.premium.forEach(i => premiumContainer.appendChild(createCard(i)));
+    menuItems.special.forEach(i => specialContainer.appendChild(createCard(i, true)));
+    
+    const burgerSection = document.createElement('div');
+    burgerSection.className = 'menu-category';
+    burgerSection.innerHTML = '<div class="category-title"><i class="fas fa-hamburger"></i> Juicy Burgers</div><div class="pizza-grid" id="burgerGrid"></div>';
+    specialContainer.parentElement.insertAdjacentElement('afterend', burgerSection);
+    const burgerGrid = document.getElementById('burgerGrid');
+    menuItems.burgers.forEach(i => burgerGrid.appendChild(createCard(i, true)));
+  }
+  renderMenuCards();
+
+  // Modal logic for size selection
+  let currentItem = null, currentIsBurger = false, selectedSize = null, selectedPrice = 0;
+  const modal = document.getElementById('itemModal');
+  const modalItemName = document.getElementById('modalItemName');
+  const modalSizes = document.getElementById('modalSizes');
+  const modalAddBtn = document.getElementById('modalAddToCart');
+
+  function openModal(item, isBurger) {
+    currentItem = item; currentIsBurger = isBurger; selectedSize = null;
+    modalItemName.innerText = item.name; modalSizes.innerHTML = '';
+    if (isBurger && item.price) {
+      const div = document.createElement('div'); div.className = 'size-option';
+      div.innerHTML = `<span class="size-name">Regular</span><span class="size-price">₨${item.price}</span>`;
+      div.addEventListener('click', () => { document.querySelectorAll('.size-option').forEach(opt => opt.style.background = 'transparent'); div.style.background = 'rgba(212,163,115,0.2)'; selectedSize = 'Regular'; selectedPrice = item.price; });
+      modalSizes.appendChild(div);
+    } else {
+      ['small', 'medium', 'large'].forEach(sz => { const price = item[sz]; if (price) { const div = document.createElement('div'); div.className = 'size-option'; div.innerHTML = `<span class="size-name">${sz.toUpperCase()}</span><span class="size-price">₨${price}</span>`; div.addEventListener('click', () => { document.querySelectorAll('.size-option').forEach(opt => opt.style.background = 'transparent'); div.style.background = 'rgba(212,163,115,0.2)'; selectedSize = sz; selectedPrice = price; }); modalSizes.appendChild(div); } });
+    }
+    modal.style.display = 'flex';
+  }
+  modalAddBtn.onclick = () => { if (!selectedSize) { alert('Please select a size'); return; } cart.push({ name: currentItem.name, size: selectedSize, price: selectedPrice, id: Date.now() + Math.random() }); saveCartAndUpdate(); closeModal(); };
+  function closeModal() { modal.style.display = 'none'; }
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.querySelectorAll('#itemModal .modal-close').forEach(btn => btn.addEventListener('click', closeModal));
+
+  function saveCartAndUpdate() { localStorage.setItem('sa_cart', JSON.stringify(cart)); updateCartUI(); updateCartCount(); }
+  function updateCartCount() { document.getElementById('cartCount').innerText = cart.reduce((s,i)=>s+1,0); }
+  function updateCartUI() {
+    const container = document.getElementById('cartItemsList'); if(!container) return;
+    container.innerHTML = ''; let total = 0;
+    cart.forEach((item, index) => { total += item.price; const div = document.createElement('div'); div.className = 'cart-item'; div.innerHTML = `<div class="cart-item-info"><div class="cart-item-name">${item.name}</div><div class="cart-item-size">${item.size}</div><div class="cart-item-price">₨${item.price}</div></div><span class="remove-item" data-idx="${index}"><i class="fas fa-trash-alt"></i></span>`; container.appendChild(div); });
+    document.getElementById('cartTotalPrice').innerText = `₨${total}`;
+    document.querySelectorAll('.remove-item').forEach(btn => { btn.addEventListener('click', (e) => { const idx = parseInt(btn.dataset.idx); cart.splice(idx,1); saveCartAndUpdate(); }); });
+  }
+  document.getElementById('clearCartBtn').addEventListener('click', () => { cart = []; saveCartAndUpdate(); });
+
+  function updateCheckoutSummary() {
+    const summaryContainer = document.getElementById('summaryItemsList');
+    const totalSpan = document.getElementById('summaryTotal');
+    if(!summaryContainer) return;
+    summaryContainer.innerHTML = ''; let total = 0;
+    if(cart.length === 0) { summaryContainer.innerHTML = '<div class="summary-item">No items in cart</div>'; totalSpan.innerText = 'Total: ₨0'; return; }
+    cart.forEach(item => { total += item.price; const div = document.createElement('div'); div.className = 'summary-item'; div.innerHTML = `<span>${item.name} (${item.size})</span><span>₨${item.price}</span>`; summaryContainer.appendChild(div); });
+    totalSpan.innerText = `Total: ₨${total}`;
+  }
+
+  const checkoutModal = document.getElementById('checkoutModal');
+  const proceedBtn = document.getElementById('proceedCheckoutBtn');
+  const closeCheckout = document.getElementById('closeCheckoutModal');
+  const placeOrderBtn = document.getElementById('placeOrderBtn');
+  proceedBtn.addEventListener('click', () => { if(cart.length===0){ alert('Your cart is empty.'); return; } updateCheckoutSummary(); checkoutModal.style.display = 'flex'; });
+  closeCheckout.addEventListener('click', () => checkoutModal.style.display = 'none');
+  placeOrderBtn.addEventListener('click', () => {
+    const name = document.getElementById('checkoutName').value.trim();
+    const phone = document.getElementById('checkoutPhone').value.trim();
+    const address = document.getElementById('checkoutAddress').value.trim();
+    const payment = document.getElementById('checkoutPayment').value;
+    if(!name || !phone || !address || !payment) { alert('Please fill all required fields.'); return; }
+    let message = `🍕 *NEW ORDER FROM S.A LIVE PIZZA* 🍔\n\n👤 *Customer Name:* ${name}\n📞 *Phone:* ${phone}\n📍 *Address:* ${address}\n💳 *Payment Method:* ${payment}\n\n*Order Items:*\n`;
+    cart.forEach(item => { message += `• ${item.name} (${item.size}) — ₨${item.price}\n`; });
+    message += `\n*Total Amount:* ₨${cart.reduce((s,i)=>s+i.price,0)}\n\n_Please confirm the order._`;
+    window.open(`https://wa.me/923339871317?text=${encodeURIComponent(message)}`, '_blank');
+    cart = []; saveCartAndUpdate(); checkoutModal.style.display = 'none'; document.getElementById('cartDrawer').classList.remove('open');
+  });
+
+  const floatingOrderBtn = document.getElementById('floatingOrderNowBtn');
+  floatingOrderBtn.addEventListener('click', () => { updateCartUI(); document.getElementById('cartDrawer').classList.add('open'); });
+
+  const cartDrawer = document.getElementById('cartDrawer');
+  const cartBtn = document.getElementById('cartBtn');
+  const closeCartBtn = document.querySelector('.close-cart');
+  cartBtn.addEventListener('click', () => { updateCartUI(); cartDrawer.classList.add('open'); });
+  closeCartBtn.addEventListener('click', () => cartDrawer.classList.remove('open'));
+  document.addEventListener('click', (e) => { if(cartDrawer.classList.contains('open')) { if(!cartDrawer.contains(e.target) && !cartBtn.contains(e.target) && e.target !== floatingOrderBtn && !floatingOrderBtn.contains(e.target)) cartDrawer.classList.remove('open'); } });
+  cartDrawer.addEventListener('click', (e) => e.stopPropagation());
+
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { if(window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+  
+  const roles = ["Tandoori Pizza", "Juicy Burgers"];
+  let idx=0, charIdx=0, isDeleting=false, isWaiting=false, timeoutHandle=null;
+  function typeEffect() {
+    const current = roles[idx];
+    const typingDiv = document.getElementById('typingText');
+    if(!typingDiv) return;
+    if(isWaiting) return;
+    if(isDeleting) {
+      typingDiv.innerHTML = current.substring(0, charIdx-1);
+      charIdx--;
+      if(charIdx===0) { isDeleting=false; idx=(idx+1)%roles.length; timeoutHandle=setTimeout(()=>{ isWaiting=false; typeEffect(); },200); isWaiting=true; return; }
+    } else {
+      typingDiv.innerHTML = current.substring(0, charIdx+1);
+      charIdx++;
+      if(charIdx===current.length) { isDeleting=true; timeoutHandle=setTimeout(()=>{ isWaiting=false; typeEffect(); },1000); isWaiting=true; return; }
+    }
+    timeoutHandle = setTimeout(typeEffect, isDeleting?90:110);
+  }
+  typeEffect();
+  document.getElementById('homeLink').classList.add('active');
+  
+  const testimonials = [
+    { name: "Ali Raza", text: "Best tandoori pizza in town. Fresh and tasty!", stars: 5 },
+    { name: "Sara Khan", text: "Malai Boti pizza is delicious. Will order again.", stars: 5 },
+    { name: "Omar Farooq", text: "Good prices and great taste. Their Crown Crust is my favorite.", stars: 5 }
+  ];
+  const slider = document.getElementById('testimonialSlider');
+  testimonials.forEach(t => { const card = document.createElement('div'); card.className = 'testimonial-card'; card.innerHTML = `<i class="fas fa-quote-left" style="color:#d4a373; font-size:1.4rem;"></i><p>${t.text}</p><div style="color:#d4a373;">${'★'.repeat(t.stars)}</div><h4 style="margin-top:8px;">${t.name}</h4>`; slider.appendChild(card); });
+  
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }); }, { threshold:0.2 });
+  reveals.forEach(r => observer.observe(r));
+  const sections = document.querySelectorAll('section');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => { const top = section.offsetTop-150; if(window.scrollY >= top) current = section.getAttribute('id'); });
+    document.querySelectorAll('.nav-link').forEach(link => { link.classList.remove('active'); if(link.getAttribute('href') === `#${current}`) link.classList.add('active'); });
+  });
+  updateCartCount(); updateCartUI();
+</script>
+</body>
+</html>
