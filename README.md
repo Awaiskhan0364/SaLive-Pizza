@@ -21,7 +21,9 @@ SaLivePizza is a simple and responsive food website designed for a pizza brand. 
 
 This project is created for practicing frontend web development.
 
+
 ****Live Demo****
+
 https://salive-pizza.netlify.app/
 
 
